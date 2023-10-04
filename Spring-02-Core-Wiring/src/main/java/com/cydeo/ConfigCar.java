@@ -27,5 +27,4 @@ public class ConfigCar {
        return p;
    }
 
-
 }
