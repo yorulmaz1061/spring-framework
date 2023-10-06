@@ -18,9 +18,19 @@
 
 <!--link-->
 <a th:href="@{https://cydeo.com}">Cydeo Page</a><br>
-<a th:href="@{/student/welcome}">Link1</a>
+<a th:href="@{/student/welcome}">Link1</a><br>
 <!--This concept is important because you gonna travel between pages-->
 
+<!--Adding Parameters to Link-->
+<a th:href="@{/student/welcome(id=3)}">Link2</a><br>
+<!--how can I put id value wih dynamic way?->with ${}}-->
+<a th:href="@{/student/welcome(id=${students.get(0).firstName})}">Link3</a>
+
+<!--iteration-->
+<ul>
+    <li th:each="student:${students}" th:text="${student.firstName}"></li>
+
+</ul>
 
 
 

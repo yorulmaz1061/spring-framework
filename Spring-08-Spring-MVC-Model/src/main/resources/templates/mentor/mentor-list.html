@@ -36,6 +36,9 @@
         </tr>
     </tbody>
 </table>
+<ul>
+    <li th:each="list:${mentors}" th:text="${list.lastName}">MentorList</li>
+</ul>
 </body>
 </html>
 
