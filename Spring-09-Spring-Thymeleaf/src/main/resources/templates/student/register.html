@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Welcome New Student</h2>
+
+<!--Displaying Value-->
+
+<h2 th:text="${students.get(0).firstName}"></h2>
+<h2 th:text="${students.get(0).lastName}"></h2>
+
+<!--Concatenation-->
+<h2 th:text="${'Welcome '+students.get(0).firstName}"></h2>
+
+<!--link-->
+<a th:href="@{https://cydeo.com}">Cydeo Page</a><br>
+<a th:href="@{/student/welcome}">Link1</a>
+<!--This concept is important because you gonna travel between pages-->
+
+
+
+
+
+
+</body>
+</html>
