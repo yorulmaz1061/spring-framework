@@ -16,13 +16,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td th:text="${mentors.get(0).firstName}"></td>
-            <td th:text="${mentors.get(0).lastName}"></td>
-            <td th:text="${mentors.get(0).age}"></td>
-            <td th:text="${mentors.get(0).gender}"></td>
+        <tr th:each="mentor:${mentors}">
+            <td th:text="${mentor.firstName}"></td>
+            <td th:text="${mentor.lastName}"></td>
+            <td th:text="${mentor.age}"></td>
+            <td th:text="${mentor.gender}"></td>
         </tr>
-        <tr>
+       <!-- <tr>
             <td th:text="${mentors.get(1).firstName}"></td>
             <td th:text="${mentors.get(1).lastName}"></td>
             <td th:text="${mentors.get(1).age}"></td>
@@ -33,12 +33,12 @@
             <td th:text="${mentors.get(2).lastName}"></td>
             <td th:text="${mentors.get(2).age}"></td>
             <td th:text="${mentors.get(2).gender}"></td>
-        </tr>
+        </tr>-->
     </tbody>
 </table>
-<ul>
+<!--<ul>
     <li th:each="list:${mentors}" th:text="${list.lastName}">MentorList</li>
-</ul>
+</ul>-->
 </body>
 </html>
 
