@@ -3,11 +3,15 @@ package com.cydeo.controller;
 import com.cydeo.bootstrap.DataGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-@RequestMapping("/register")
+//@RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping("/register")  // It has the same function with @RequestMapping above
     public String register(Model model){
     model.addAttribute("students", DataGenerator.createStudent());
 
@@ -19,7 +23,8 @@ public class StudentController {
         // which is thymeleaf
 
     }
-    @RequestMapping("/welcome")
+   // @RequestMapping("/welcome")
+    @GetMapping("/welcome") // It has the same function with @RequestMapping above
     public String info(){
 
     return "student/welcome";
