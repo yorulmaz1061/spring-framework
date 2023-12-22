@@ -1,18 +1,14 @@
 package com.cydeo.bootstrap;
 
-import com.cydeo.entity.Customer;
-import com.cydeo.entity.Merchant;
-import com.cydeo.entity.Payment;
-import com.cydeo.entity.PaymentDetail;
+import com.cydeo.entity.*;
 import com.cydeo.enums.Status;
-import com.cydeo.repository.CustomerRepository;
-import com.cydeo.repository.MerchantRepository;
-import com.cydeo.repository.PaymentRepository;
+import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Component
 public class DataGenerator implements CommandLineRunner {
@@ -21,10 +17,15 @@ public class DataGenerator implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository) {
+    private final ItemRepository itemRepository;
+    private final CartRepository cartRepository;
+
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository, ItemRepository itemRepository, CartRepository cartRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
         this.customerRepository = customerRepository;
+        this.itemRepository = itemRepository;
+        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -56,6 +57,22 @@ public class DataGenerator implements CommandLineRunner {
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
 
+        Item item1=new Item("A1", "milk");
+        Item item2=new Item("C1", "water");
+        Item item3=new Item("P1","coke");
+
+        Cart cart1=new Cart();
+        Cart cart2=new Cart();
+
+        cart1.setItemList(Arrays.asList(item1,item2,item3));
+        cart2.setItemList(Arrays.asList(item1,item2));
+
+        itemRepository.save(item1);
+        itemRepository.save(item2);
+        itemRepository.save(item3);
+
+        cartRepository.save(cart1);
+        cartRepository.save(cart2);
 
     }
 }
