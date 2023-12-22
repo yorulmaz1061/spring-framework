@@ -35,4 +35,8 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "merchant_id")
     private Merchant merchant;
+
+    @ManyToOne
+    @JoinColumn(name="customers")
+    private Customer customer;
 }
