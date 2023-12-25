@@ -17,7 +17,7 @@ public class MovieCinema extends BaseEntity{
     private LocalDateTime DateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    //people usualy put ManyToOne Relationship
+    //people usually put ManyToOne Relationship (NOT!! OneToMany)
     private Movie movie;
 
     @ManyToOne(fetch = FetchType.LAZY)
