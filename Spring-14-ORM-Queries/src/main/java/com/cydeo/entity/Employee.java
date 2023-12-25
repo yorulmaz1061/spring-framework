@@ -22,8 +22,13 @@ public class Employee extends BaseEntity{
     private Gender gender;
     private Integer salary;
 
-    private Region regionId;
-
+    @ManyToOne
+    @JoinColumn(name = "department")
     private Department department;
+
+    @ManyToOne
+    private Region region;
+
+
 
 }
