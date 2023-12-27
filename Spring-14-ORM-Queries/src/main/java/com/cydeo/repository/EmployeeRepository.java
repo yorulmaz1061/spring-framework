@@ -2,9 +2,11 @@ package com.cydeo.repository;
 
 import com.cydeo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //Display all employees with email adress ' '
@@ -28,6 +30,20 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //Display all employees that do not have email adress
     //I did not put any parameter
     List<Employee>findByEmailIsNull();
+
+    //Below they are JPQL:
+    @Query("Select e from Employee e where e.email='sdubber7@t-online.de'" )
+    Employee getEmployeeDetail();
+
+    @Query ("select e.salary from  Employee e where e.email='sdubber7@t-online.de'")
+    Integer getEmployeeSalary();
+
+    @Query("SELECT  e FROM Employee e WHERE e.email=?1")
+    //Since it may return null pointer exception it is with Optional structure
+    Optional<Employee> getEmployeeDetail(String email);
+
+    @Query("SELECT e from Employee e where e.email=?1 AND e.salary=?2")
+    Optional<Employee>getEmployeDetail(String email, int salary);
 
 
 
