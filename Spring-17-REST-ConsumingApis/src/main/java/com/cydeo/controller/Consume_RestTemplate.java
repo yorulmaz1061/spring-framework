@@ -13,7 +13,7 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("/users")
 public class Consume_RestTemplate {
-    //provide URI which URI will bew consumed
+    //provide URI which URI will be consumed
     private final String URI = "https://jsonplaceholder.typicode.com/users";
     //Rest Template injection
     private final RestTemplate  restTemplate;
@@ -21,8 +21,8 @@ public class Consume_RestTemplate {
     public Consume_RestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
-    //If you consume something the nyou use @Getmapping not postmapping
-    //now I am building my own API. retun me all list of users
+    //If you consume something then you use @Getmapping not @Postmapping
+    //now I am building my own API. Return me all list of users
     // which is going to come from 3rd party API
     @GetMapping
     public User[] readAllUsers(){
@@ -37,7 +37,7 @@ public class Consume_RestTemplate {
     // That is my endpoint.
     public Object readUser(@PathVariable("id") Integer id){
     // What is the differences from above?
-        //  In getForObject there is no mapping, it retrives data and leave it to your end point.
+        //  In getForObject there is no mapping, it retrieves data and leave it to your end point.
         // URL will change because of path variable
         String URL = URI + "/{id}";
         return restTemplate.getForObject(URL, Object.class,id);
@@ -52,6 +52,7 @@ public class Consume_RestTemplate {
         ResponseEntity<Object> response =restTemplate.exchange("https://dummyapi.io/data/v1/user?limit=10", HttpMethod.GET,entity, Object.class);
 return response;
     }
+
 
 
 
