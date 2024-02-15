@@ -73,19 +73,21 @@ public class LoggingAspect {
     public void beforeControllerAdvice(JoinPoint joinPoint){
         logger.info("Before -> Method : {} - Arguments : {} - Target: {}", joinPoint, joinPoint.getArgs(), joinPoint.getTarget());
     }*/
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
-    private void anyGetCourseOperation(){}
-    //Afterreturning works wit key=value principles.
-    @AfterReturning(pointcut = "anyGetCourseOperation()", returning = "result")
+
+//    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+//    private void anyGetCourseOperation(){}
+    //AfterReturning works with key=value principles.
+   /* @AfterReturning(pointcut = "anyGetCourseOperation()", returning = "result")
     public void afterReturningControllerAdvice(JoinPoint joinPoint, Object result){
         logger.info("After returning -> Method: {} - result: {}", joinPoint.getSignature().toShortString(),result.toString());
     }
 
-//    @AfterReturning(pointcut = "anyGetCourseOperation()", returning = "result")
-//    public void afterReturningControllerAdvice(JoinPoint joinPoint, List<Object> result){
-//        logger.info("After returning(List) -> Method: {} - result: {}", joinPoint.getSignature().toShortString(),result.toString());
-//    }
+    @AfterReturning(pointcut = "anyGetCourseOperation()", returning = "result")
+    public void afterReturningControllerAdvice(JoinPoint joinPoint, List<Object> result){
+        logger.info("After returning(List) -> Method: {} - result: {}", joinPoint.getSignature().toShortString(),result.toString());
+    }*/
 
+//@AfterThrowing is used for to get informatio on methods which throws an exception.
 //    @AfterThrowing(pointcut = "anyGetCourseOperation()", throwing = "exception")
 //    public void afterThrowingControllerAdvice(JoinPoint joinPoint, RuntimeException exception){
 //        logger.info("After Throwing -> Method: {} - Exception: {}", joinPoint.getSignature().toShortString(), exception.getMessage());
@@ -96,20 +98,24 @@ public class LoggingAspect {
 //        logger.info("After finally -> Method : {}", joinPoint.getSignature().toShortString());
 //    }
 
-    /*@Pointcut("@annotation(com.cydeo.annotation.Loggable)")
-    private void anyLoggableMethodOperation(){}*/
+    // I defined custom loggable annotation as an address
+    @Pointcut("@annotation(com.cydeo.annotation.Loggable)")
+    private void anyLoggableMethodOperation(){}
 
-   /* @Around("anyLoggableMethodOperation()")
+    @Around("anyLoggableMethodOperation()")
+    // I return one object(It should be dynamic combination that's wh we put Object as a type.
+    //If we use @Around it will be named as ProceedingJoinPoint
     public Object anyLoggableMethodOperationAdvice(ProceedingJoinPoint proceedingJoinPoint){
         logger.info("Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
+        //Before execution my objcet is assumed null, after execution it will return with results.
         Object results = null;
         try {
             results =proceedingJoinPoint.proceed();
         } catch (Throwable e) {
             e.printStackTrace();
         }
+        //After execution
         logger.info("After -> Method: {} - Results: {}", proceedingJoinPoint.getSignature().toShortString(),results.toString());
         return results;
     }
-*/
 }
