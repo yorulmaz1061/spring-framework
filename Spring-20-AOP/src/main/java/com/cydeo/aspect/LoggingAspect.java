@@ -11,24 +11,26 @@ import java.util.List;
 
 
 @Aspect
-//When I put @Aspect, spring will not create a bean for this class.
-//We add @Configuration for pluggable configuration
-//We will build all business logic inside of this class.
+/*When I put @Aspect, spring will not create a bean for this class.
+We add @Configuration for pluggable @Configuration
+We will build all business logic inside of this class.*/
+
 @Configuration
 public class LoggingAspect {
 
     Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
-    // Which place I want to monitor? all course controller methods.
-    //*-->no matter return type each will include
-    //com.cydeo.controller--> adress of the packages.
-    //.CourseController--> I want to get CourseController class method's information
-    //.*(..)--> get all methods with any number of arguments.
 
-/*  @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
-  // It is how I am going to define this part? with advice like @Before
-  private void pointcut(){}*/
+    /* Which place I want to monitor? all course controller methods.
+    *-->no matter return type each will include
+    com.cydeo.controller--> address of the packages.
+    .CourseController--> I want to get CourseController class method's information
+    .*(..)--> get all methods with any number of arguments.*/
 
-   // Advices is associated with pointcut
+//  @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
+//  // It is how I am going to define this part? with advice like @Before
+//  private void pointcut(){}
+
+    // Advices is associated with pointcut
 //    @Before("pointcut()")
 //    public void log(){
 //      logger.info("Logger info ------");
@@ -39,8 +41,10 @@ public class LoggingAspect {
     public void beforeAdvice(){
         logger.info("Logger info ------");
     }*/
+
 //Below, I want to get a specific method which is in repository.
 //I have just one parameter, it is not important which type of parameter.
+
 /*    @Pointcut("execution(* com.cydeo.repository.CourseRepository.findById(*))")
     private void anyProductRepositoryFindById(){}
 // You can display any information  by using joinpoint methods. Like below joinpoint.getArgs()

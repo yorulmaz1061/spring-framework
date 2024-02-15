@@ -24,7 +24,7 @@ public class CourseController {
     @GetMapping
     public List<CourseDTO> getAllCourses() {
 
-      // logger.info("Before -> Controller: {} - Method {} "," CourseController","getCourses()");
+      // logger.info("Before -> Controller: {} - Method {} ","CourseController","getCourses()");
         List<CourseDTO> list = courseService.getCourses();
     //   logger.info("After -> Controller: {} - Method : {} - Output : {}"," CourseController","getCourses()", list.toString());
         return list;
