@@ -32,14 +32,15 @@ public class Consume_WebClient {
     public Mono<MovieCinema> readById(@PathVariable("id")Long id){
         return Mono.just(movieCinemaRepository.findById(id).get());
     }
-    @GetMapping
+    @GetMapping("/mono-movie-cinema/{id}")
     public ResponseEntity<Mono<MovieCinema>> readByIdI(@PathVariable("id") Long id){
         return ResponseEntity.ok(Mono.just(movieCinemaRepository.findById(id).get()));
     }
     @PostMapping("/create-genre")
     public Mono<Genre> createGenre(@RequestBody Genre genre){
-        Genre createdGenre = genreRepository.save(genre);
-        return Mono.just(createdGenre);
+        /*Genre createdGenre = genreRepository.save(genre);
+        return Mono.just(createdGenre);*/
+        return Mono.just(genreRepository.save(genre));
     }
     @DeleteMapping("/delete/genre/{id}")
     public Mono<Void> deleteGenre(@PathVariable("id") Long id){
