@@ -12,7 +12,7 @@
     <artifactId>Spring-23-UnitTesting-MockMvc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring-23-UnitTesting-MockMvc</name>
-    <description>Spring-23-UnitTesting-MockMvc</description>
+    <description>Spring-23-UnitTesting-Mockmvc</description>
     <properties>
         <java.version>11</java.version>
     </properties>

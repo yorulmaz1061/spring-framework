@@ -2,6 +2,7 @@ package com.cydeo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "merchants")
 @Data
+@NoArgsConstructor
 public class Merchant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
