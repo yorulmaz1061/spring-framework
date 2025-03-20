@@ -13,6 +13,7 @@ public class AppConfig2 {
         return "Welcome to CydeoApp";
     }
     //@Primary
+    //You can give specific bean name like below "string2"
     @Bean("string2")
     public String str2(){
         return "Spring core practice";

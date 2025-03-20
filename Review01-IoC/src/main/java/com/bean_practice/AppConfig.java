@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
     //Take this object and put it inside the container
     @Bean
-    FullTimeEmployee fullTimeEmployee() {
+    public FullTimeEmployee fullTimeEmployee() {
         return new FullTimeEmployee();
     }
 
     @Bean
-    PartTimeEmployee partTimeEmployee() {
+    public PartTimeEmployee partTimeEmployee() {
         return new PartTimeEmployee();
     }
 
