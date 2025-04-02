@@ -15,7 +15,6 @@ public class DataGenerator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        accountRepository.findAllByCountryOrState("United States","New York").forEach(System.out::println);
 
 
 
