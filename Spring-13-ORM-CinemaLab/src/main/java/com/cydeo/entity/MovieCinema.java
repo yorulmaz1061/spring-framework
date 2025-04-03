@@ -17,19 +17,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class MovieCinema extends BaseEntity{
     @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime DateTime;
+    private LocalDateTime dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     //people usually put ManyToOne Relationship (NOT!! OneToMany)
     private Movie movie;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Cinema cinema;
 
     @Override
     public String toString() {
         return "MovieCinema{" +
-                "DateTime=" + DateTime +
+                "dateTime=" + dateTime +
                 '}';
     }
 }

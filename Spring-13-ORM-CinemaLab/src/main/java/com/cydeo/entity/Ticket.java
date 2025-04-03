@@ -19,10 +19,10 @@ public class Ticket extends BaseEntity{
     private LocalDateTime dateTime;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private MovieCinema movieCinema;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User userAccount;
 
     @Override

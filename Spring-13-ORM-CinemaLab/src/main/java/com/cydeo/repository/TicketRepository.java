@@ -34,7 +34,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket>findBySpecificUser(Long userId);
 
     //Write a JPQL query that returns all tickets between a range of dates
-    @Query("SELECT t from Ticket t WHERE t.movieCinema.DateTime BETWEEN ?1 AND ?2")
+    @Query("SELECT t from Ticket t WHERE t.movieCinema.dateTime BETWEEN ?1 AND ?2")
     List<Ticket>findTicketByRangeBetween(LocalDateTime start, LocalDateTime end);
 
     // ------------------- Native QUERIES ------------------- //
@@ -61,12 +61,12 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     //Write a native query to list all tickets where a specific value should be containable in the username or account name or movie name
     @Query(value = "SELECT * FROM ticket t JOIN user_account ua ON t.user_account_id = ua.id "
-    +"JOIN account_details ad ON ua.account_details_id = ad.id "
-    +"JOIN movie_cinema mc ON t.movie_cinema_id=mc.id JOIN movie m ON mc.movie_id = m.id"
+    +" JOIN account_details ad ON ua.account_details_id = ad.id "
+    +" JOIN movie_cinema mc ON t.movie_cinema_id=mc.id JOIN movie m ON mc.movie_id = m.id"
             + " WHERE ua.username ILIKE concat('%',?1,'%')"
-            + " OR ad.name ILIKE concat('%',?1,'%')\"
+            + " OR ad.name ILIKE concat('%',?1,'%')"
             + " OR m.name ILIKE concat('%',?1,'%')"
-            ,nativeQuery = true)
+            , nativeQuery = true)
     List<Ticket> findBySpecificName(String pattern);
 
 }

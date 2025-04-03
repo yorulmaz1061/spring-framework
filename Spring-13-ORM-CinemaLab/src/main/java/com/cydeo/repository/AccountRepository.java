@@ -58,17 +58,17 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     //Write a native query to read all accounts that a specific value can be containable in the name, address, country, state city
     //If we change dB to Oracle it will not work because there's no ILIKE definition in Oracle but Postgres
     @Query(value = "SELECT * FROM account_details WHERE name ILIKE concat('%',?1,'%') OR" +
-            " adress ILIKE concat('%',?,'%') OR"
-            +" country ILIKE concat('%',?,'%') OR"
-            +" state ILIKE concat('%',?,'%') OR"
-            +" city ILIKE concat('%',?,'%')",nativeQuery = true)
+            " adress ILIKE concat('%',?1,'%') OR"
+            +" country ILIKE concat('%',?1,'%') OR"
+            +" state ILIKE concat('%',?1,'%') OR"
+            +" city ILIKE concat('%',?1,'%')",nativeQuery = true)
     List<Account>containableInNameAddressCountryState(String pattern);
     //if dB is other than Postgres you can use below:
     @Query(value = "SELECT * FROM account_details WHERE LOWER(name) LIKE LOWER(concat('%',?1,'%')) OR" +
-            " LOWER(adress) LIKE LOWER(concat('%',?,'%')) OR"
-            +" LOWER(country) LIKE LOWER(concat('%',?,'%')) OR"
-            +" LOWER(state) LIKE LOWER(concat('%',?,'%')) OR"
-            +" LOWER(city) LIKE LOWER(concat('%',?,'%'))",nativeQuery = true)
+            " LOWER(adress) LIKE LOWER(concat('%',?1,'%')) OR"
+            +" LOWER(country) LIKE LOWER(concat('%',?1,'%')) OR"
+            +" LOWER(state) LIKE LOWER(concat('%',?1,'%')) OR"
+            +" LOWER(city) LIKE LOWER(concat('%',?1,'%'))",nativeQuery = true)
     List<Account>containableInNameAddressCountryState2(String pattern);
 
 

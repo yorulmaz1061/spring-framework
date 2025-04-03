@@ -17,7 +17,7 @@ private String email;
 private String password;
 private String username;
 
-@OneToOne (fetch = FetchType.LAZY)
+@OneToOne (fetch = FetchType.EAGER)
 @JoinColumn(name = "account_details_id")
 private Account account;
 
