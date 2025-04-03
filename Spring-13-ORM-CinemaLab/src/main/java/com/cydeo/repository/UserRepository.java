@@ -18,13 +18,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
 
     //Write a derived query to list all users that contain a specific name?
-    List<User>findByUsernameContaining(String pattern);
+    List<User>findByAccountNameContaining(String name);
 
     //Write a derived query to list all users that contain a specific name in the ignore case mode?
-    List<User>findByUsernameContainingIgnoreCase(String pattern);
+    List<User>findByAccountNameContainingIgnoreCase(String name);
 
     //Write a derived query to list all users with an age greater than a specified age?
-    List<User> findByAgeGreaterThan(int age);
+    List<User> findByAccountAgeGreaterThan(int age);
 
     // ------------------- JPQL QUERIES ------------------- //
 
@@ -44,7 +44,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //Write a native query that returns all users that contain a specific name?
     @Query(value = "SELECT * FROM user_account ua JOIN account_details ad ON ua.account_details_id = ad.id"
-    +" WHERE ad.name=?1 ",nativeQuery = true)
+    +" WHERE ad.name ILIKE concat('%',?1,'%')",nativeQuery = true)
     List<User> findBySpecificName(String name);
 
     //Write a native query that returns all users?
